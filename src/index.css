@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 50% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 50% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 50% 12%;
+
+    --primary: 215 62% 22%;
+    --primary-foreground: 43 71% 90%;
+
+    --secondary: 43 71% 47%;
+    --secondary-foreground: 215 62% 10%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 20% 45%;
+
+    --accent: 43 90% 55%;
+    --accent-foreground: 215 62% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 25% 85%;
+    --input: 215 25% 88%;
+    --ring: 215 62% 22%;
+
+    --radius: 0.5rem;
+
+    /* Brand colors */
+    --navy: 215 62% 22%;
+    --navy-dark: 215 70% 14%;
+    --navy-light: 215 50% 35%;
+    --gold: 43 71% 47%;
+    --gold-light: 43 85% 62%;
+    --gold-pale: 43 100% 92%;
+
+    --sidebar-background: 215 62% 14%;
+    --sidebar-foreground: 43 71% 85%;
+    --sidebar-primary: 43 71% 47%;
+    --sidebar-primary-foreground: 215 62% 10%;
+    --sidebar-accent: 215 50% 20%;
+    --sidebar-accent-foreground: 43 71% 85%;
+    --sidebar-border: 215 40% 20%;
+    --sidebar-ring: 43 71% 47%;
+  }
+
+  .dark {
+    --background: 215 70% 8%;
+    --foreground: 210 40% 95%;
+    --card: 215 60% 12%;
+    --card-foreground: 210 40% 95%;
+    --popover: 215 60% 12%;
+    --popover-foreground: 210 40% 95%;
+    --primary: 43 71% 47%;
+    --primary-foreground: 215 62% 10%;
+    --secondary: 215 40% 20%;
+    --secondary-foreground: 210 40% 95%;
+    --muted: 215 40% 16%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 43 90% 55%;
+    --accent-foreground: 215 62% 10%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 95%;
+    --border: 215 40% 20%;
+    --input: 215 40% 20%;
+    --ring: 43 71% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Certificate-specific styles */
+.certificate-font {
+  font-family: 'Playfair Display', serif;
+}
+
+.certificate-title-font {
+  font-family: 'Cinzel', serif;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  body {
+    background: white;
+    margin: 0;
+    padding: 0;
+  }
+  .print-page {
+    width: 100%;
+    height: 100%;
+    page-break-after: always;
+  }
+}
+
+/* Gold shimmer animation */
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(43 71% 47%) 0%,
+    hsl(43 90% 70%) 25%,
+    hsl(43 71% 47%) 50%,
+    hsl(43 90% 70%) 75%,
+    hsl(43 71% 47%) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 3s linear infinite;
+}
+
+/* Document preview container */
+.document-shadow {
+  box-shadow: 0 20px 60px rgba(26, 58, 92, 0.15), 0 8px 24px rgba(26, 58, 92, 0.1);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--navy));
+  border-radius: 3px;
+}
